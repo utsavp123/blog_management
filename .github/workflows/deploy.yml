@@ -1,0 +1,46 @@
+name: PHP Deployment
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Install PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '7.4'
+
+      - name: Install Dependencies
+        run: composer install --no-dev
+
+      - name: Build Project (if needed)
+        run: # Add any build commands if required
+
+      - name: Deploy to Hosting Environment
+        run: |
+          # Replace the following commands with your deployment commands for a local web server (e.g., XAMPP or WAMP)
+
+          # Assuming your project is in the 'public' directory, you can copy it to the web server's document root
+          cp -r public/* /path/to/htdocs
+
+          # If using XAMPP, you can start the Apache server
+          # Replace 'xampp-control.exe' with the actual path to your XAMPP control panel executable
+          "C:\xampp\xampp-control.exe" start
+
+          # If using WAMP, you can start the Apache server
+          # Replace 'wampmanager.exe' with the actual path to your WAMP manager executable
+          "C:\wamp\wampmanager.exe" start
+
+          # You may need to restart the Apache server to apply changes
+          # Uncomment the line below if necessary
+          # "C:\xampp\xampp-control.exe" restart
+          
+          #
