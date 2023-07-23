@@ -43,4 +43,9 @@ jobs:
           # Uncomment the line below if necessary
           # "C:\xampp\xampp-control.exe" restart
           
-          #
+          # Wait for the server to start (you can increase the sleep time if needed)
+          sleep 10
+
+          # Display the URL where the project can be accessed in the browser
+          echo "Your PHP project is now accessible at http://localhost/"
+
